@@ -13,3 +13,10 @@ export const getPokemonsInfo = (okCallback, koCallback, url, pokemonList) => {
     .then((response) => okCallback(response, pokemonList))
     .catch((error) => koCallback(error));
 };
+
+export const getEvolutionChain = (okCallback, koCallback, url) => {
+  axios
+    .get(`${url}`)
+    .then((response) => okCallback(response))
+    .catch((error) => koCallback(error));
+};

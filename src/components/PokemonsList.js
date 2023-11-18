@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getPokemons, getPokemonsInfo } from "../services/pokemonServices";
 import { Card, CardHeader, CardMedia } from "@mui/material";
 import Pagination from "./Pagination";
@@ -7,6 +8,7 @@ const PokemonsList = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [offset, setOffset] = useState(0);
   const LIMIT = 10;
+  const navigate = useNavigate();
 
   useEffect(() => {
     getPokemons(okCallback, koCallback, { offset, LIMIT });
@@ -51,7 +53,7 @@ const PokemonsList = () => {
           pokemonList.map((pokemon) => {
             return (
               <Card key={pokemon.name}>
-                <CardHeader title={pokemon.name} />
+                <CardHeader title={pokemon.name} onClick={() => navigate(`/${pokemon.name}`)} />
                 <CardMedia component="img" height="194" image={pokemon.sprite} alt="Paella dish" />
               </Card>
             );
