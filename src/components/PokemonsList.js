@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
-import { getPokemons, getPokemonsInfo } from "../services/pokemonServices";
+import { useDispatch, useSelector } from "react-redux";
 import { Card, CardHeader, CardMedia } from "@mui/material";
+import { getPokemons, getPokemonsInfo } from "../services/pokemonServices";
+import { setPokemonOffset } from "../reducers/pokemonReducer";
 import Pagination from "./Pagination";
+import Topbar from "./Topbar";
 
 const PokemonsList = () => {
   const [pokemonList, setPokemonList] = useState([]);
-  const [offset, setOffset] = useState(0);
+  const offset = useSelector((state) => state.pokemon.offset);
   const LIMIT = 10;
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getPokemons(okCallback, koCallback, { offset, LIMIT });
@@ -41,26 +44,38 @@ const PokemonsList = () => {
 
   const goNextPage = () => {
     setPokemonList([]);
-    setOffset((prev) => prev + LIMIT);
+    dispatch(setPokemonOffset(offset + LIMIT));
   };
 
   const goPrevPage = () => {
     if (offset >= LIMIT) {
       setPokemonList([]);
-      setOffset((prev) => prev - LIMIT);
+      dispatch(setPokemonOffset(offset - LIMIT));
     }
   };
 
   return (
     <>
+      <Topbar />
       <div style={{ marginBottom: 30, marginTop: 10 }}>{t("title")}</div>
       <div style={{ display: "flex", flexDirection: "row", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
         {pokemonList &&
           pokemonList.map((pokemon) => {
             return (
               <Card key={pokemon.name}>
-                <CardHeader title={pokemon.name} onClick={() => navigate(`/${pokemon.name}`)} />
-                <CardMedia component="img" height="194" image={pokemon.sprite} alt="Pokemon sprite" />
+                <CardHeader
+                  title={pokemon.name}
+                  style={{ pointerEvents: "visible", cursor: "pointer" }}
+                  onClick={() => navigate(`/${pokemon.name}`)}
+                />
+                <CardMedia
+                  style={{ pointerEvents: "visible", cursor: "pointer" }}
+                  component="img"
+                  height="194"
+                  image={pokemon.sprite}
+                  alt="Pokemon sprite"
+                  onClick={() => navigate(`/${pokemon.name}`)}
+                />
               </Card>
             );
           })}

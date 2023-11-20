@@ -14,6 +14,8 @@ const resources = {
       pokemon_weight: "Pokemon weight: ",
       types: "Types: ",
       stats: "Stats: ",
+      back: "Back",
+      total: "Total: ",
     },
   },
   it: {
@@ -25,6 +27,8 @@ const resources = {
       pokemon_weight: "Peso del pokemon: ",
       types: "Tipi: ",
       stats: "Statistiche: ",
+      back: "Indietro",
+      total: "Totale: ",
     },
   },
 };
