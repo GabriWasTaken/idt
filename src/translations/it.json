@@ -1,0 +1,13 @@
+{
+  "translation": {
+    "title": "Benvenuto nella Pokemon App",
+    "detail": "Dettaglio del pokemon",
+    "pokedex_number": "Numero di pokedex: ",
+    "pokemon_height": "Altezza del pokemon: ",
+    "pokemon_weight": "Peso del pokemon: ",
+    "types": "Tipi: ",
+    "stats": "Statistiche: ",
+    "back": "Indietro",
+    "total": "Totale: "
+  }
+}

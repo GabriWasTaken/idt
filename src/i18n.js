@@ -1,36 +1,11 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import en from "./translations/en.json";
+import it from "./translations/it.json";
 
-// the translations
-// (tip move them in a JSON file and import them,
-// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const resources = {
-  en: {
-    translation: {
-      title: "Welcome to Pokemon App",
-      detail: "Pokemon detail",
-      pokedex_number: "Pokedex number: ",
-      pokemon_height: "Pokemon height: ",
-      pokemon_weight: "Pokemon weight: ",
-      types: "Types: ",
-      stats: "Stats: ",
-      back: "Back",
-      total: "Total: ",
-    },
-  },
-  it: {
-    translation: {
-      title: "Benvenuto nella Pokemon App",
-      detail: "Dettaglio del pokemon",
-      pokedex_number: "Numero di pokedex: ",
-      pokemon_height: "Altezza del pokemon: ",
-      pokemon_weight: "Peso del pokemon: ",
-      types: "Tipi: ",
-      stats: "Statistiche: ",
-      back: "Indietro",
-      total: "Totale: ",
-    },
-  },
+  en: en,
+  it: it,
 };
 
 i18n
