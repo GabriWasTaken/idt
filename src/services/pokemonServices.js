@@ -20,3 +20,10 @@ export const getEvolutionChain = (okCallback, koCallback, url) => {
     .then((response) => okCallback(response))
     .catch((error) => koCallback(error));
 };
+
+export const getPokemonSpecies = (okCallback, koCallback, url) => {
+  axios
+    .get(`${url}`)
+    .then((response) => okCallback(response))
+    .catch((error) => koCallback(error));
+};

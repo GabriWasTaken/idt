@@ -1,25 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const pokemonSlice = createSlice({
-  name: "video",
+  name: "pokemon",
   initialState: {
-    title: "",
-    serieId: "",
-    cover: "",
-    videoId: "",
-    episodes: [],
+    offset: 0,
   },
   reducers: {
-    videoTitle: (state, action) => {
-      state.title = action.payload.title;
-      state.serieId = action.payload.serieId;
-      state.cover = action.payload.cover;
-      state.videoId = action.payload.videoId;
-      state.episodes = action.payload.episodes;
+    setPokemonOffset: (state, action) => {
+      state.offset = action.payload;
     },
   },
 });
 
-export const { videoTitle } = pokemonSlice.actions;
+export const { setPokemonOffset } = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;

@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import videoSlice from "./videoReducer";
+import pokemonSlice from "./pokemonReducer";
 
 export const store = configureStore({
   reducer: {
-    video: videoSlice,
+    pokemon: pokemonSlice,
   },
 });
